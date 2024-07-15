@@ -1,0 +1,8 @@
+RealTimeSTT: downloader - ERROR - Response status code 404, file https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg
+RealTimeSTT: spotipy.client - ERROR - HTTP Error for PUT to https://api.spotify.com/v1/me/player/play with Params: {} returned 404 due to Player command failed: No active device found
+RealTimeSTT: spotipy.client - ERROR - HTTP Error for PUT to https://api.spotify.com/v1/me/player/play with Params: {} returned 404 due to Player command failed: No active device found
+RealTimeSTT: spotipy.client - ERROR - HTTP Error for PUT to https://api.spotify.com/v1/me/player/play with Params: {} returned 404 due to Player command failed: No active device found
+RealTimeSTT: downloader - ERROR - Response status code 400, file https://image.jimcdn.com/app/cms/image/transf/dimension=899x10000:format=jpg
+RealTimeSTT: downloader - ERROR - Response status code 404, file https://static.wikia.nocookie.net/doblaje/images/a/a0/1_Red.png
+RealTimeSTT: spotipy.client - ERROR - HTTP Error for PUT to https://api.spotify.com/v1/me/player/play with Params: {} returned 404 due to Player command failed: No active device found
+RealTimeSTT: spotipy.client - ERROR - HTTP Error for PUT to https://api.spotify.com/v1/me/player/play with Params: {} returned 404 due to Player command failed: No active device found

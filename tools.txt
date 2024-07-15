@@ -1,3 +1,4 @@
+#currently working tols except websearch, youtube search, and app opening
 import subprocess
 import webbrowser
 import python_weather
@@ -12,28 +13,24 @@ async def get_weather(city_name):
         weather = await client.get(city_name)
         return weather
 
-def search(query):
-    google_Crawler = GoogleImageCrawler(storage={"root_dir": r'./images'})
-    google_Crawler.crawl(keyword=query, max_num=1)
+def search_image(query):
+    google_crawler = GoogleImageCrawler(storage={"root_dir": './images'})
+    google_crawler.crawl(keyword=query, max_num=1)
 
 def open_application(app_name):
     try:
-        # Map known applications to their paths
-        app_paths = {
-            "spotify": r"C:\Users\YourUsername\AppData\Roaming\Spotify\Spotify.exe",  # Adjust path as needed
-            "vscode": r"C:\Users\jcgus\AppData\Local\Programs\Microsoft VS Code\Code.exe",
-            "slack": r"C:\Users\jcgus\AppData\Local\slack\slack.exe",
-        }
-        app_path = app_paths.get(app_name.lower(), app_name)
-        subprocess.Popen(app_path)
-        return f"Opening {app_name}"
-    except FileNotFoundError as e:
-        print(f"File not found: {app_name}. Error: {e}")
-        return f"File not found: {app_name}. Error: {e}"
+        app_name = app_name.lower()
+        if app_name == "spotify":
+            subprocess.Popen(["C:\\Users\\YourUsername\\AppData\\Roaming\\Spotify\\Spotify.exe"])  # Adjust path as needed
+        elif app_name == "notepad":
+            subprocess.Popen("notepad.exe")
+        elif app_name == "visual studio code" or app_name == "vscode":
+            subprocess.Popen(["code"])
+        else:
+            subprocess.Popen(app_name)
     except Exception as e:
         print(f"Error opening {app_name}: {e}")
         return f"Error opening {app_name}: {e}"
-
 
 def search_web(query):
     url = f"https://www.google.com/search?q={query}"
@@ -54,47 +51,57 @@ def open_streaming_service(service_name):
     }
     if service_name.lower() in services:
         webbrowser.open(services[service_name.lower()])
-        return f"Opening {service_name} in your web browser"
+        return f"Opening {service_name}"
     else:
         return f"Streaming service {service_name} not recognized"
 
 def parse_command(command):
     try:
         if "weather" in command:
+            print("Fetching weather...")
             weather_description = asyncio.run(get_weather("Managua"))
             query = "System Information: " + str(weather_description)
             print(query)
             response = assist.ask_question_memory(query)
-            done = assist.TTS(response)
+            assist.TTS(response)
 
-        elif "image search" in command:
+        elif "image search" in command or "search the web for a picture of" in command:
+            print("Performing image search...")
             files = os.listdir("./images")
             [os.remove(os.path.join("./images", f)) for f in files]
-            query = command.split("-")[1].strip()  # Extract search query
-            search(query)
+            if "image search" in command:
+                query = command.split("image search for ")[1].strip()  # Extract search query
+            else:
+                query = command.split("search the web for a picture of ")[1].strip()
+            search_image(query)
 
         elif "play" in command:
+            print("Playing music...")
             spot.start_music()
 
         elif "pause" in command:
+            print("Pausing music...")
             spot.stop_music()
 
         elif "skip" in command:
+            print("Skipping to next track...")
             spot.skip_to_next()
 
         elif "previous" in command:
+            print("Skipping to previous track...")
             spot.skip_to_previous()
 
         elif "spotify" in command:
+            print("Fetching Spotify info...")
             spotify_info = spot.get_current_playing_info()
             query = "System Information: " + str(spotify_info)
             print(query)
             response = assist.ask_question_memory(query)
-            done = assist.TTS(response)
+            assist.TTS(response)
 
         elif "open" in command:
+            print("Opening application...")
             app_name = command.split("open ")[1].strip()
-            # Check if the app name is a known streaming service
             if app_name.lower() in ["netflix", "hulu", "disney plus", "amazon prime"]:
                 response = open_streaming_service(app_name)
             else:
@@ -102,19 +109,28 @@ def parse_command(command):
             print(response)
             assist.TTS(response)
 
-        elif "web search for" in command:
-            query = command.split("web search for ")[1].strip()
+        elif "web search for" in command or "look up on the web" in command:
+            print("Performing web search...")
+            if "web search for" in command:
+                query = command.split("web search for ")[1].strip()
+            else:
+                query = command.split("look up on the web for ")[1].strip()
             response = search_web(query)
             print(response)
             assist.TTS(response)
 
-        elif "search youtube for" in command:
-            query = command.split("search youtube for ")[1].strip()
+        elif "youtube search for" in command or "look up on youtube" in command:
+            print("Performing YouTube search...")
+            if "youtube search for" in command:
+                query = command.split("youtube search for ")[1].strip()
+            else:
+                query = command.split("look up on youtube for ")[1].strip()
             response = search_youtube(query)
             print(response)
             assist.TTS(response)
 
         elif "hashtag search the web for" in command:
+            print("Performing web search with hashtag...")
             query = command.split("hashtag search the web for ")[1].strip()
             response = search_web(query)
             print(response)
