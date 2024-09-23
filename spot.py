@@ -2,8 +2,8 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 username = "jm4m9idwdrleld3ephqlvd0xu"
-clientID = "50fba88bc43c40f79605771f674e1134"
-clientSecret = "70c5658df20843329e129cb41f855dcd"
+clientID = ""
+clientSecret = ""
 redirect_uri = "http://localhost:8888/callback"
 
 def spotify_authenicate(client_id, client_secret, redirect_uri, username):
