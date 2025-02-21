@@ -1,0 +1,98 @@
+/* src/styles/Dashboard.css */
+.dashboard {
+    display: flex;
+    height: 100vh;
+    background: #121212;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .widgets-container {
+    flex: 1;
+    display: grid;
+    /* Create 3 columns of equal width */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;           /* Reduced gap */
+    padding: 10px;       /* Reduced padding */
+    overflow-y: auto;
+    background: #1e1e1e;
+  }
+  
+  /* General widget style */
+  .widget {
+    background: #222222;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Let the widget stretch to fill its grid cell */
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* Widget header */
+  .widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(135deg, #2a2a2a, #3a3a3a);
+    padding: 10px 15px;
+    border-bottom: 1px solid #00ffe0;
+    color: #00ffe0;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  /* In your Dashboard.css (or a separate CSS file for widget header) */
+.widget-header button {
+    background: none;    /* No background color */
+    border: none;        /* No border */
+    color: #000;         /* Black text */
+    font-size: 16px;     /* Adjust size as needed */
+    cursor: pointer;
+    padding: 0;          /* Remove extra padding */
+    outline: none;       /* Remove focus outline if desired */
+  }
+  
+  /* Optional: change color on hover if you want a hover effect */
+  .widget-header button:hover {
+    color: #555;         /* Dark gray on hover */
+  }
+  
+  
+  /* Widget body */
+  .widget-body {
+    padding: 15px;
+    flex: 1;
+    background: #2b2b2b;
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  /* Optional hover effect */
+  .widget:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease;
+  }
+  
+  /* Extra styling for the tasks widget so that it spans two rows */
+  .widget.tasks-widget {
+    grid-row: span 2;
+  }
+  
+  @media (max-width: 800px) {
+    .widgets-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+  }
+  
+  @media (max-width: 500px) {
+    .widgets-container {
+      grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+  }
+  

@@ -1,0 +1,52 @@
+/* src/styles/CryptoWidget.css */
+.crypto-widget {
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .crypto-widget h2 {
+    margin-top: 0;
+    color: #00ffe0; /* Neon teal accent */
+  }
+  
+  .crypto-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .crypto-item {
+    background: #2b2b2b;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #333;
+  }
+  
+  .crypto-item h3 {
+    margin: 0 0 5px;
+    color: #00ffe0;
+    font-size: 18px;
+  }
+  
+  .crypto-item p {
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #ccc;
+  }
+  
+  .crypto-item a {
+    color: #00ffe0;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .crypto-item a:hover {
+    text-decoration: underline;
+  }
+  

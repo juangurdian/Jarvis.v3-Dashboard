@@ -1,0 +1,12 @@
+/* src/styles/PlaceholderWidget.css */
+.placeholder-widget {
+    background: #2b2b2b;             /* Dark background */
+    border: 1px solid #333;           /* Subtle border */
+    border-radius: 8px;               /* Rounded corners */
+    padding: 20px;
+    text-align: center;
+    color: #e0e0e0;                   /* Light text color for contrast */
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }

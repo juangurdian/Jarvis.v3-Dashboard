@@ -1,0 +1,134 @@
+/* src/styles/TaskWidget.css */
+.task-widget {
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    max-height: 800px; /* Limit height to force scrolling when needed */
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .task-widget h2 {
+    margin-top: 0;
+    color: #00ffe0; /* Neon teal accent */
+  }
+  
+  .new-task {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .new-task input,
+  .new-task select {
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background: #333;
+    color: #e0e0e0;
+  }
+  
+  .new-task button {
+    padding: 8px;
+    background: #00ffe0;
+    color: #222;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .new-task button:hover {
+    background: #00ccba;
+  }
+  
+  .task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    overflow-y: auto; /* Make the list scrollable */
+  }
+  
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #444;
+  }
+  
+  .task-item:last-child {
+    border-bottom: none;
+  }
+  
+  .task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .task-status {
+    font-weight: bold;
+  }
+  
+  /* Colors for each status */
+  .task-status.not-started {
+    color: #ff5555; /* Red for not started */
+  }
+  
+  .task-status.barely-started {
+    color: #ff8c00; /* Orange */
+  }
+  
+  .task-status.started {
+    color: #ffd700; /* Yellow */
+  }
+  
+  .task-status.in-progress {
+    color: #00ff00; /* Green */
+  }
+  
+  .task-status.near-completion {
+    color: #00ffff; /* Cyan */
+  }
+  
+  .task-status.done {
+    color: #999;
+    text-decoration: line-through;
+  }
+  
+  .task-actions button {
+    margin-left: 10px; /* Extra space between buttons */
+    padding: 5px 10px;
+    background: #00ffe0;
+    color: #222;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .task-actions button:hover {
+    background: #00ccba;
+  }
+  
+  /* For WebKit browsers (Chrome, Safari, Edge) */
+.task-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* For Firefox */
+  .task-list {
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  /* For Internet Explorer 10+ */
+  .task-list {
+    -ms-overflow-style: none;
+  }
+  
