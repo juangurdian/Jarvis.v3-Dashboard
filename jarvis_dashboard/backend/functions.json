@@ -1,0 +1,297 @@
+{
+  "functions": [
+    {
+      "name": "control_lights",
+      "description": "Control the lights in the room",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "boolean",
+            "description": "True to turn lights on, False to turn them off"
+          }
+        },
+        "required": ["state"]
+      }
+    },
+    {
+      "name": "web_search",
+      "description": "Search the web for real-time information",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "The search query to look up"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "spotify_control",
+      "description": "Control Spotify playback functions",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "action": {
+            "type": "string",
+            "description": "The Spotify action to perform",
+            "enum": ["get_current_playing", "start_music", "stop_music", "skip_to_next", "skip_to_previous"]
+          }
+        },
+        "required": ["action"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "Success message or error description"
+      }
+    },
+    {
+      "name": "toggle_silent_mode",
+      "description": "Toggle silent mode on or off",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "state": {
+            "type": "boolean",
+            "description": "True to enable silent mode, False to disable it"
+          }
+        },
+        "required": ["state"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "Confirmation message indicating the current silent mode status"
+      }
+    },
+    {
+      "name": "add_calendar_event",
+      "description": "Add a new event to your calendar.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "description": "The title or summary of the event."
+          },
+          "start_time": {
+            "type": "string",
+            "description": "The event start time in ISO format (e.g., '2023-05-25T09:00:00')."
+          },
+          "end_time": {
+            "type": "string",
+            "description": "The event end time in ISO format."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional event description."
+          }
+        },
+        "required": ["summary", "start_time", "end_time"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message or an error description."
+      }
+    },
+    {
+      "name": "get_calendar_events_range",
+      "description": "Retrieve calendar events between two dates (inclusive). Dates must be in YYYY-MM-DD format.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "start_date": {
+            "type": "string",
+            "description": "The start date in YYYY-MM-DD format."
+          },
+          "end_date": {
+            "type": "string",
+            "description": "The end date in YYYY-MM-DD format."
+          }
+        },
+        "required": ["start_date", "end_date"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A formatted list of events or an error message."
+      }
+    },
+    {
+      "name": "get_calendar_events_for_week",
+      "description": "Retrieve calendar events for the week of the specified reference date. If no reference date is provided, 'today' is assumed.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "reference_date": {
+            "type": "string",
+            "description": "The reference date in YYYY-MM-DD format, or 'today' for the current week.",
+            "default": "today"
+          }
+        },
+        "required": []
+      },
+      "returns": {
+        "type": "string",
+        "description": "A formatted list of events for the week or an error message."
+      }
+    },
+    {
+      "name": "delete_calendar_event",
+      "description": "Delete a calendar event based on its summary. Optionally specify the day (defaults to 'today').",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "string",
+            "description": "The summary (or part of it) of the event to delete."
+          },
+          "day": {
+            "type": "string",
+            "description": "The day of the event (e.g., 'today' or '2025-02-05').",
+            "default": "today"
+          }
+        },
+        "required": ["summary"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message or an error description."
+      }
+    },  
+    {
+      "name": "update_calendar_event",
+      "description": "Update an existing calendar event by deleting the old event and adding a new one with updated details.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "old_summary": {
+            "type": "string",
+            "description": "The summary of the event to update."
+          },
+          "new_summary": {
+            "type": "string",
+            "description": "The new title or summary of the event."
+          },
+          "new_start_time": {
+            "type": "string",
+            "description": "The new start time in ISO format (e.g., '2025-02-05T10:00:00')."
+          },
+          "new_end_time": {
+            "type": "string",
+            "description": "The new end time in ISO format (e.g., '2025-02-05T11:00:00')."
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional event description."
+          }
+        },
+        "required": ["old_summary", "new_summary", "new_start_time", "new_end_time"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message for the update or an error description."
+      }
+    },
+    {
+      "name": "add_task",
+      "description": "Add a new task to your to-do list.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "A description of the task."
+          },
+          "due_date": {
+            "type": "string",
+            "description": "The due date/time in ISO 8601 format."
+          },
+          "status": {
+            "type": "string",
+            "description": "The initial status of the task (e.g., 'not started', 'in progress', etc.)"
+          }
+        },
+        "required": ["description", "due_date"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message or an error message."
+      }
+    },
+    {
+      "name": "update_task",
+      "description": "Update an existing task in your to-do list.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The ID of the task to update."
+          },
+          "description": {
+            "type": "string",
+            "description": "The new description of the task."
+          },
+          "due_date": {
+            "type": "string",
+            "description": "The new due date/time in ISO 8601 format."
+          },
+          "status": {
+            "type": "string",
+            "description": "The new status of the task (e.g., 'done', 'in progress', etc.)"
+          }
+        },
+        "required": ["task_id"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message or an error message."
+      }
+    },
+    {
+      "name": "delete_task",
+      "description": "Delete a task from your to-do list by its ID.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The ID of the task to delete."
+          }
+        },
+        "required": ["task_id"]
+      },
+      "returns": {
+        "type": "string",
+        "description": "A confirmation message or an error message."
+      }
+    },
+    {
+      "name": "get_tasks",
+      "description": "Retrieve all tasks from your to-do list.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      },
+      "returns": {
+        "type": "string",
+        "description": "A formatted list of tasks or an error message."
+      }
+    },
+    {
+      "name": "get_trending_crypto",
+      "description": "Retrieve trending crypto pairs from Dexscreener.",
+      "parameters": {
+        "type": "object",
+        "properties": {}
+      },
+      "returns": {
+        "type": "string",
+        "description": "A formatted list of trending crypto pairs."
+      }
+    }
+    
+    
+  ]
+}
