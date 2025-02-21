@@ -12,7 +12,7 @@ from crypto import fetch_trending_crypto
 
 
 # Initialize OpenAI with the API Key from your env variables
-api_key = ("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")
+api_key = ("")
 if not api_key:
     raise ValueError("The API key must be set in the .env file or as an environment variable.")
 
