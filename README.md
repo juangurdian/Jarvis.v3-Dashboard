@@ -87,6 +87,30 @@ npm install
 
 npm start
 
+To run Jarvis, you’ll need to provide your own API keys and credentials. Here’s how:
+
+1. 🗝️ Create a .env File
+
+Inside the jarvis_dashboard/backend folder, create a file called .env:
+Then open .env and fill in your own credentials:
+
+OPENAI_API_KEY=your_openai_api_key_here
+NEWS_API_KEY=your_newsapi_key_here
+SPOTIFY_CLIENT_ID=your_spotify_client_id_here
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret_here
+SPOTIFY_USERNAME=your_spotify_username_here
+SPOTIFY_REDIRECT_URI=http://localhost:8888/callback
+
+. 📁 Add Google Calendar Credentials
+
+Jarvis uses Google Calendar. You’ll need to:
+	•	Go to the Google Cloud Console.
+	•	Create OAuth 2.0 credentials.
+	•	Download the credentials.json file.
+	•	Place it inside the following folder:
+
+ jarvis_dashboard/backend/credentials.json
+
 The frontend will start on http://localhost:3000 and connect to the Flask backend running at http://localhost:5000.
 
 🧩 Add New Functions Easily
