@@ -1,6 +1,9 @@
 from googlesearch import search
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Web search functions
 def perform_web_search(query, num_results=3):
@@ -24,19 +27,18 @@ def control_lights(state: bool):
 # Spotify controls
 username = ''
 
+username = os.getenv("SPOTIFY_USERNAME")
+
 def spotify_authenticate():
-    """
-    Authenticate with Spotify and return a Spotify client.
-    """
     scope = (
         "user-read-playback-state user-modify-playback-state "
         "user-read-currently-playing user-read-playback-position "
         "user-library-read user-library-modify user-read-email user-read-private"
     )
     auth_manager = SpotifyOAuth(
-        client_id="ClientID",
-        client_secret="ClientSecret",
-        redirect_uri="http://localhost:8888/callback",
+        client_id=os.getenv("SPOTIFY_CLIENT_ID"),
+        client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
+        redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
         scope=scope,
         username=username
     )

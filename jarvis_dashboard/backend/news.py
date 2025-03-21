@@ -1,10 +1,12 @@
 # backend/app.py
 import requests
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Make sure you have your NewsAPI key stored securely.
 # You can either set it as an environment variable or paste it here directly.
-NEWS_API_KEY = 'fc37cdb2bbae4dd89f6dcaca589ef8ac'
+NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 def fetch_latest_news(query=None):
     """

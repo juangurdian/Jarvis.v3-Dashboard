@@ -9,12 +9,15 @@ import calendar_tools as calendar_tools
 import shared_variables as shared_variables
 from task_manager import add_task, update_task, delete_task, get_tasks
 from crypto import fetch_trending_crypto
+from dotenv import load_dotenv
+load_dotenv()
 
 
 # Initialize OpenAI with the API Key from your env variables
-api_key = ("")
+api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise ValueError("The API key must be set in the .env file or as an environment variable.")
+client = OpenAI(api_key=api_key)
 
 client = OpenAI(api_key=api_key)
 mixer.init()

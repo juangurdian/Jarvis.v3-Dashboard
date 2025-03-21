@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+env/
+venv/
+.realtimesst.log
+*.log
+
+# Environment Variables
+.env
+backend/.env
+frontend/.env
+
+# API Tokens & Credentials
+credentials.json
+token.pickle
+jarvis_dashboard/backend/credentials.json
+
+# Node.js
+node_modules/
+frontend/node_modules/
+package-lock.json
+
+# React Build
+frontend/build/
+
+# VSCode & System Files
+.vscode/
+.DS_Store
